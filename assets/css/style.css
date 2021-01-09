@@ -1,0 +1,17 @@
+.card-body {
+	background-image: url('../img/chart-bg.svg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.cases-info {
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+@media screen and (max-width: 576px) {
+	.img-responsive {
+		width: 50px;
+	}
+}
