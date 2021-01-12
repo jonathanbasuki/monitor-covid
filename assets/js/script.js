@@ -1,17 +1,13 @@
 $(document).ready(function() {
 
-	// Global Data
+	// Call Function
 	globalData();
-
-	// Data Indonesia
 	dataIndonesia();
-	dataProvince();
 
 	// Auto Refresh
 	setInterval(function() {
 		globalData();
 		dataIndonesia();
-		dataProvince();
 	}, 3000);
 
 	function globalData() {
@@ -23,10 +19,11 @@ $(document).ready(function() {
 					var cases = data.cases;
 					var deaths = data.deaths;
 					var recovered = data.recovered;
+					var formatter = new Intl.NumberFormat('en');
 
-					$('#cases').html(cases);
-					$('#deaths').html(deaths);
-					$('#recovered').html(recovered);
+					$('#cases').html(formatter.format(cases));
+					$('#deaths').html(formatter.format(deaths));
+					$('#recovered').html(formatter.format(recovered));
 				} catch {
 					alert('Error');
 				}
@@ -41,6 +38,7 @@ $(document).ready(function() {
 				try {
 					var json = data;
 					var html = [];
+					var formatter = new Intl.NumberFormat('en');
 
 					if (json.length > 0) {
 						for (var i = 0; i < json.length; i++) {
@@ -53,25 +51,11 @@ $(document).ready(function() {
 								var recovered = stateData.recovered;
 
 								$('#data-indonesia').html(
-									'Cases: ' + cases + '<br> Deaths: ' + deaths + '<br> Recovered: ' + recovered
+									'Confirmed: <b>' + formatter.format(cases) + '</b><br> Deaths: <b>' + formatter.format(deaths) + '</b><br> Recovered: <b>' + formatter.format(recovered) + '</b>'
 								)
 							}
 						}
 					}
-				} catch {
-					alert('Error');
-				}
-			}
-		});
-	}
-
-	function dataProvince() {
-		$.ajax({
-			url: 'curl.php',
-			type: 'GET',
-			success: function(data) {
-				try {
-					$('#data-province').html(data);
 				} catch {
 					alert('Error');
 				}

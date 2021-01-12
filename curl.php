@@ -25,29 +25,16 @@ function http_request($url) {
 }
 
 // Call function
-$data = http_request('https://api.kawalcorona.com/indonesia/provinsi/');
+$global = http_request('https://api.kawalcorona.com/');
+$province = http_request('https://api.kawalcorona.com/indonesia/provinsi/');
 
 // Change to JSON format
-$data = json_decode($data, TRUE);
+$global = json_decode($global, TRUE);
+$province = json_decode($province, TRUE);
 
-// Count data
-$total = count($data); 
-$index = 1;
+// Count Data 
+$indexGlobal = 1;
+$totalGlobal = count($global);
 
-for ($i=0; $i < $total; $i++) :
-	$result = $data[$i]['attributes'];
- ?>
-
- 	<tr>
- 		<td><?= $index++ ?></td>
- 		<td><?= $result['Provinsi'] ?></td>
- 		<td><?= $result['Kasus_Posi'] ?></td>
- 		<td><?= $result['Kasus_Meni'] ?></td>
- 		<td><?= $result['Kasus_Semb'] ?></td>
- 	</tr>
-
- <?php 
-
-endfor;
-
-  ?>
+$indexProvince = 1;
+$totalProvince = count($province);
