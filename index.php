@@ -21,7 +21,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
     <!-- DataTables -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
 
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
@@ -31,7 +31,7 @@
   <body>
     <div class="container">
       <div class="row">
-        <div class="col-md-10 offset-md-1 my-4">
+        <div class="col-md-12 my-4">
           <div class="card text-center">
             <div class="card-header bg-success text-light py-4">
               <h1 class="text-uppercase fw-light">Monitor covid-19</h1>
@@ -46,10 +46,10 @@
                     <div class="row p-3">
                       <div class="col-md-8 text-light text-start">
                         <h4 class="text-uppercase fw-light fs-5">Confirmed</h4>
-                        <h3 id="cases"></h3>
+                        <h3><b id="cases"></b></h3>
                       </div>
                       <div class="col-md-3 d-flex align-items-start">
-                        <img src="assets/img/positive.png" alt="Coronavirus cases" width="60px" class="img-responsive">
+                        <img src="assets/img/positive.png" alt="Coronavirus cases" width="60px" class="img-responsive pr-2">
                       </div>
                     </div>
                   </div>
@@ -59,7 +59,7 @@
                     <div class="row p-3">
                       <div class="col-md-8 text-light text-start">
                         <h4 class="text-uppercase fw-light fs-5">Deaths</h4>
-                        <h3 id="deaths"></h3>
+                        <h3><b id="deaths"></b></h3>
                       </div>
                       <div class="col-md-3 d-flex align-items-start">
                         <img src="assets/img/died.png" alt="Recovered" width="60px" class="img-responsive">
@@ -72,7 +72,7 @@
                     <div class="row p-3">
                       <div class="col-md-8 text-light text-start">
                         <h4 class="text-uppercase fw-light fs-5">Recovered</h4>
-                        <h3 id="recovered"></h3>
+                        <h3><b id="recovered"></b></h3>
                       </div>
                       <div class="col-md-3 d-flex align-items-start">
                         <img src="assets/img/recovered.png" alt="Recovered" width="60px" class="img-responsive">
@@ -162,7 +162,7 @@
                 </div>
               </div>
             <div class="card-footer">
-              Copyright &copy; 2021, Jonathan Basuki. All rights reserved.
+              &copy; <?= date('Y'); ?>, Jonathan Basuki.
             </div>
           </div>
         </div>
@@ -171,14 +171,13 @@
 
     <!-- Optional JavaScript; choose one of the two! -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap5.min.js"></script>
     <script src="assets/js/script.js"></script>
     <script>
-        $(document).ready(function() {
+      $(document).ready(function() {
             $('table.data').DataTable({
-              "scrollY":        "400px",
-              "scrollCollapse": true,
-              "paging":         false
+              "scrollX": true
             });
         } );
     </script>
